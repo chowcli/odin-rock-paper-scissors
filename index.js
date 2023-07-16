@@ -1,41 +1,47 @@
-function getComputerChoice() {
-  let computerChoice = Math.random();
-  if (computerChoice <= 0.33) return (computerChoice = "Rock");
+function getComputerSelection() {
+  const array = ["rock", "paper", "scissors"];
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
 
-  if (computerChoice <= 0.66) return (computerChoice = "Paper");
-
-  return (computerChoice = "Scissors");
+function getPlayerSelection() {
+  let playerSelection;
+  const rock = document.querySelector(".rock");
+  rock.addEventListener("click", () => {
+    game("rock");
+  });
+  const paper = document.querySelector(".paper");
+  paper.addEventListener("click", () => {
+    game("paper");
+  });
+  const scissors = document.querySelector(".scissors");
+  scissors.addEventListener("click", () => {
+    game("scissors");
+  });
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerChoice = playerSelection.toLowerCase();
-  computerChoice = computerSelection.toLowerCase();
-
-  if (playerChoice === computerChoice) {
+  if (playerSelection === computerSelection) {
     alert("The game is a Tie");
     return;
   }
   if (
-    (playerChoice === "rock" && computerChoice === "scissors") ||
-    (playerChoice === "paper" && computerChoice === "rock") ||
-    (playerChoice === "scissors" && computerChoice === "paper")
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
   ) {
-    alert(`You win! ${playerSelection} beats ${computerSelection}`);
+    alert(`You win! You choose ${playerSelection} and the computer chooses ${computerSelection}`);
   } else {
-    alert(`You lose! ${computerSelection} beats ${playerSelection}`);
+    alert(`You lose! You choose ${playerSelection} and the computer chooses ${computerSelection}`);
   }
 }
 
-function game() {
-  let playerSelection;
-  let computerSelection;
+function game(playerSelection) {
+  let computerSelection = getComputerSelection();
+  console.log(playerSelection);
+  console.log(computerSelection);
 
-  for (let i = 0; i < 5; i++) {
-    playerSelection = prompt("Pick Rock, Paper, or Scissors", "");
-    computerSelection = getComputerChoice();
-
-    playRound(playerSelection, computerSelection);
-  }
+  playRound(playerSelection, computerSelection);
 }
 
-game();
+getPlayerSelection();
