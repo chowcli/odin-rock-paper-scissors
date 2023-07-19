@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css" />
     <script src="index.js" defer></script>
   </head>
   <body>
@@ -12,19 +13,22 @@
 
     <p class="rule">The first to earn 5 score win!</p>
 
-    <div id="player">
-      <p class="playerChoice">Player choice:</p>
-      <p class="score">Player score: <span class="playerScore">0</span></p>
+    <div class="info-display">
+      <div id="player">
+        <p class="playerChoice">Player choice:</p>
+        <p class="score">Player score: <span class="playerScore">0</span></p>
+      </div>
+      <div id="computer">
+        <p class="computerChoice">Computer choice:</p>
+        <p class="score">Computer score: <span class="computerScore">0</span></p>
+      </div>
     </div>
 
-    <div id="computer">
-      <p class="computerChoice">Computer choice:</p>
-      <p class="score">Computer score: <span class="computerScore">0</span></p>
+    <div class="btn">
+      <button class="choiceBtn">ROCK</button>
+      <button class="choiceBtn">PAPER</button>
+      <button class="choiceBtn">SCISSORS</button>
     </div>
-
-    <button class="choiceBtn">ROCK</button>
-    <button class="choiceBtn">PAPER</button>
-    <button class="choiceBtn">SCISSORS</button>
 
     <div class="resultText"></div>
   </body>

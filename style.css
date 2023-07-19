@@ -1,0 +1,80 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #ffdab9;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  font-size: 64px;
+  font-weight: lighter;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-style: oblique;
+  padding: 20px 0px;
+  color: #835a5a;
+}
+
+.rule,
+.resultText {
+  text-align: center;
+  font-size: 40px;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-style: italic;
+  color: #800000;
+}
+
+.info-display {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-self: center;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 20px;
+  color: #574aa9;
+}
+
+#player {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#computer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 80px;
+}
+
+.choiceBtn {
+  background-color: #faf0e6;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  border-radius: 5px;
+  padding: 10px;
+  color: #556b2f;
+  width: 150px;
+}
+
+.resultText{
+    margin-top: 40px;
+}
