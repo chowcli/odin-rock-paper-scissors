@@ -1,44 +1,79 @@
-function getComputerSelection() {
-  const array = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
+// game
+function getComputerChoice() {
+  const array = ["ROCK", "PAPER", "SCISSORS"];
+  let choice = Math.floor(Math.random() * array.length);
+  return (computer = array[choice]);
 }
 
-function getPlayerSelection() {
-  let playerSelection;
-  const rock = document.querySelector(".rock");
-  rock.addEventListener("click", () => {
-    playRound("rock", getComputerSelection());
-  });
-  const paper = document.querySelector(".paper");
-  paper.addEventListener("click", () => {
-    playRound("paper", getComputerSelection());
-  });
-  const scissors = document.querySelector(".scissors");
-  scissors.addEventListener("click", () => {
-    playRound("scissors", getComputerSelection());
-  });
-}
-
-let playerScore = 0;
-let computerScore = 0;
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    alert("The game is a Tie");
-    return;
-  }
-  if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
+function checkWinner() {
+  if (player === computer) {
+    return (winner = "tie");
+  } else if (
+    (player === "ROCK" && computer === "SCISSORS") ||
+    (player === "PAPER" && computer === "ROCK") ||
+    (player === "SCISSORS" && computer === "PAPER")
   ) {
-    alert(`You win! You choose ${playerSelection} and the computer chooses ${computerSelection}`);
-    playerScore++;
+    return (winner = "player");
   } else {
-    alert(`You lose! You choose ${playerSelection} and the computer chooses ${computerSelection}`);
-    computerScore++;
+    return (winner = "computer");
   }
 }
 
-getPlayerSelection();
+function updateScore() {
+  if (checkWinner() === "tie") {
+    return;
+  } else if (checkWinner() === "player") {
+    p_score += 1;
+  } else {
+    c_score += 1;
+  }
+}
+
+function checkSumScore() {
+  if (p_score === 5 || c_score === 5) return true;
+
+  return false;
+}
+
+function declareWinner() {
+  if (p_score === 5) return "You win this round!";
+  else if (c_score === 5) {
+    return "You lose! The computer win this round.";
+  }
+}
+
+function endGame() {
+  if (checkSumScore() === true) {
+    choiceBtns.forEach((button) => (button.disabled = true));
+  }
+}
+
+// UI
+const playerChoice = document.querySelector(".playerChoice");
+const playerScore = document.querySelector(".playerScore");
+const computerChoice = document.querySelector(".computerChoice");
+const computerScore = document.querySelector(".computerScore");
+const resultText = document.querySelector(".resultText");
+const choiceBtns = document.querySelectorAll(".choiceBtn");
+
+let player;
+let computer;
+let winner;
+let p_score = 0;
+let c_score = 0;
+
+choiceBtns.forEach((button) =>
+  button.addEventListener("click", () => {
+    player = button.textContent;
+    getComputerChoice();
+    playerChoice.textContent = `Player choice: ${player}`;
+    computerChoice.textContent = `Computer choice: ${computer}`;
+
+    updateScore();
+    playerScore.textContent = `${p_score}`;
+    computerScore.textContent = `${c_score}`;
+
+    resultText.textContent = declareWinner();
+    endGame();
+  })
+);
